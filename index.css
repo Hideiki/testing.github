@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(192, 191, 191));
+}
+
+nav {
+    background: rgb(239, 235, 235);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 4rem;
+    gap: 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: navy;
+    position:  relative;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover {
+    transform: translateY(-5px);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    background: rgb(255, 17, 0);
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.hero-container {
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(192, 191, 191));
+    border: 1px solid rgb(223, 223, 223);
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(54, 54, 88);
+}
+
+.hero {
+    width: 150px;            
+    height: 150px;           
+    object-fit: cover;
+    border-radius: 50%;      
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 3px solid white;
+    margin: 2rem auto;
+    display: block;
+}
+
+.btn-container {
+    margin-top: 0.8rem;
+}
+
+.btn {
+    margin: 30px 10px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    border: none;
+    background: rgb(85, 85, 161);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    background: rgb(211, 123, 0);
+    transform: translateY(-5px);
+}
+
+section {
+    background:white;
+    padding-top: 3rem;
+}
+
+.h1-container {
+    text-align: center;
+}
+
+h1 {
+    position: relative;
+    display: inline-block;
+    color: navy; font-size: 40px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;                
+    left: 50%;                    
+    transform: translateX(-50%);  
+    width: 50%;                   
+    height: 3px;                  
+    background-color: orange;     
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    background: white;
+}
+
+.card {
+    margin: 3rem 4rem;
+    border-radius: 20px;
+    text-align: center;
+    padding: 1rem 2rem;
+    background: white;
+    box-shadow: 0 20px 30px rgb(192, 190, 190);
+    transition: transform 0.3s ease;
+    border: 1px solid black;
+}
+
+.card:hover {
+    transform: translateY(-20px);
+}
+
+.img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.hot {
+    width: 120px;            
+    height: 120px;           
+    object-fit: cover;
+    border-radius: 50%;      
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.cute {
+    width: 120px;            
+    height: 120px;           
+    object-fit: cover;
+    border-radius: 50%;      
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.stunning {
+    width: 120px;            
+    height: 120px;           
+    object-fit: cover;
+    border-radius: 50%;      
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 3px solid white;
+    transition: transform 0.3s ease;
+}
+
+.img-container:hover .hot {
+    transform: scale(1.05);
+}
+
+.img-container:hover .cute {
+    transform: scale(1.05);
+}
+
+.img-container:hover .stunning {
+    transform: scale(1.05);
+}
+
+.img-container span {
+    background: rgb(69, 69, 135);
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border-radius: 50px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgb(232, 232, 232);
+    border-top: 1px solid black;
+    font-weight: bold;
+    color: rgb(169, 169, 170);
+}
