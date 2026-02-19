@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1e24;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:     100vh;
+    padding: 2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    flex: 1;
+    min-width: 260px;
+    max-width: 350px;
+    position: relative;
+    box-shadow: 0 10px 20px white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid black;
+}
+
+.card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 20px 30px white;
+}
+
+.badge {
+    background-color: yellow;
+    position: absolute;
+    border: 1px solid black;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(255, 255, 0, 0.259);
+}
+
+h2 {
+    letter-spacing: 2px;
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 45px;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+span {
+    color: rgb(86, 84, 84);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 2rem;   
+}
+
+ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid white;
+}
+
+.available {
+    color: rgb(53, 182, 53);
+}
+
+.unavailable {
+    color: rgb(193, 66, 66);
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: rgb(99, 99, 255);
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: rgb(63, 63, 180);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .badge {
+        position: static;
+        transform: none;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+}

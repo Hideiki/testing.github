@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(images/spy\ x\ family.jpg);
+    background-attachment: fixed;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 300px 1fr;
+    grid-template-areas: 
+    "navbar navbar" 
+    "sidebar main" 
+    "sidebar footer";
+    min-height: 100vh;
+}
+
+nav {
+    grid-area: navbar;
+    background-color: #272e28;
+    color: white;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+aside {
+    top: 50px;
+    height: calc(100vh - 50px);
+    position: sticky;
+    align-self: flex-start;
+    grid-area: sidebar;
+    background-color: sienna;
+    color: white;
+}
+
+main {
+    grid-area: main;
+}
+
+main h1 {
+    color: rgb(206, 217, 180);
+    text-shadow: 2px 2px 5px #000000;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #222623;
+    color: white;
+    padding: 1rem;
+}
+
+@media(max-width: 800px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+    aside {
+        position: fixed;
+        width: 300px;
+        display: none;
+    }
+    .show {
+        display: block;
+    }
+}

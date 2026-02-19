@@ -1,0 +1,49 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    float: left;
+}
+
+a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    text-align: center;
+}
+
+a:hover {
+    background-color: black;
+}
+
+.about {
+    color: white;
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    float: right;
+}
+
+.about:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+img {
+    float: left;
+    width: 300px;
+    padding: 0px 20px;
+
+}

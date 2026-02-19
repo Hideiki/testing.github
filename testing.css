@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1e24;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.animated-cards {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+     0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.card {
+    background: white;
+    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 350px;
+    border: 1px solid black;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    box-shadow: 0 10px 20px white;
+    animation: fadeIn 1s ease;
+}
+
+.button {
+     background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    bottom: 10px;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.card:hover .emoji {
+    animation: bounce 0.4s ease;
+}
+
+.card:hover .button{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card.lift:hover {
+    transform: translateY(-40px)
+}
+
+.card.spin:hover {
+    transform: rotate(180deg)
+}
+
+.card.pulse:hover {
+    transform: scale(1.2);
+}
+
+.card.glow:hover {
+    box-shadow: 0 30px 40px rgb(229, 38, 38);
+}
+
+h1, p {
+    font-weight: bold;
+    text-align: center;
+}
