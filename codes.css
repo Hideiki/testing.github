@@ -1,0 +1,66 @@
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 10px;
+}
+
+.challenge {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-left: 5px solid #3b82f6;
+}
+
+h2 {
+    margin-top: 0;
+    color: #1e293b;
+    font-size: 1.3rem;
+}
+
+input {
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+}
+
+button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+.result {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Different colors for different results */
+.result.success { background: #d1fae5; color: #065f46; }
+.result.error { background: #fee2e2; color: #991b1b; }
+.result.info { background: #dbeafe; color: #1e40af; }

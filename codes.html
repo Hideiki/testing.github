@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>While & Do-While Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1e293b;
+            color: white;
+        }
+        h1 { text-align: center; color: #fbbf24; }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        button {
+            padding: 1rem;
+            font-size: 1.1rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+        }
+        .output {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #fbbf24;
+            min-height: 200px;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 While & Do-While Loop Playground</h1>
+    
+    <div class="button-container">
+        <button onclick="countToTen()">1️⃣ Count 1 to 10</button>
+        <button onclick="sumNumbers()">2️⃣ Sum of 1 to 100</button>
+        <button onclick="guessGame()">3️⃣ Guessing Game </button>
+        <button onclick="atmMenu()">4️⃣ ATM Menu</button>
+        <button onclick="multiplicationTable()">5️⃣ Multiplication Table</button>
+    </div>
+    
+    <div class="output" id="output">
+        ► Click a button to see the result...
+    </div>
+
+    <script src="codes.js">
+        
+    </script>
+</body>
+</html>
