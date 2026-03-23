@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Sorting - Beginner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { color: #3498db; }
+        
+        .challenge {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .output {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Basic Sorting - Beginner</h1>
+    
+    <div class="note">
+        <strong>📌 Remember:</strong> 
+        <ul>
+            <li><code>.sort()</code> with strings: just call it!</li>
+            <li><code>.sort()</code> with numbers: use <code>(a, b) => a - b</code> for ascending</li>
+            <li><code>(a, b) => b - a</code> for descending</li>
+            <li>For objects: compare properties like <code>a.age - b.age</code></li>
+        </ul>
+    </div>
+
+    <div class="challenge">
+        <h2>1. Sort Strings Alphabetically</h2>
+        <button onclick="challenge1()">Run Challenge 1</button>
+        <button onclick="showAnswer(1)">Show Answer</button>
+        <div class="output" id="output1"></div>
+        <div id="answer1" style="display:none; background:#e8f4f8; padding:15px; margin-top:15px; border-radius:5px;">
+            <pre><code>let words = ['dog', 'cat', 'elephant', 'bird', 'ant'];
+words.sort();
+console.log(words);</code></pre>
+        </div>
+    </div>
+
+    <div class="challenge">
+        <h2>2. Sort Numbers Ascending</h2>
+        <button onclick="challenge2()">Run Challenge 2</button>
+        <button onclick="showAnswer(2)">Show Answer</button>
+        <div class="output" id="output2"></div>
+        <div id="answer2" style="display:none; background:#e8f4f8; padding:15px; margin-top:15px; border-radius:5px;">
+            <pre><code>let numbers = [42, 3, 15, 8, 23, 1];
+numbers.sort((a, b) => a - b);
+console.log(numbers);</code></pre>
+        </div>
+    </div>
+
+    <div class="challenge">
+        <h2>3. Sort Numbers Descending</h2>
+        <button onclick="challenge3()">Run Challenge 3</button>
+        <button onclick="showAnswer(3)">Show Answer</button>
+        <div class="output" id="output3"></div>
+        <div id="answer3" style="display:none; background:#e8f4f8; padding:15px; margin-top:15px; border-radius:5px;">
+            <pre><code>let scores = [85, 92, 78, 95, 88, 76];
+scores.sort((a, b) => b - a);
+console.log(scores);</code></pre>
+        </div>
+    </div>
+
+    <div class="challenge">
+        <h2>4. Sort by String Length</h2>
+        <button onclick="challenge4()">Run Challenge 4</button>
+        <button onclick="showAnswer(4)">Show Answer</button>
+        <div class="output" id="output4"></div>
+        <div id="answer4" style="display:none; background:#e8f4f8; padding:15px; margin-top:15px; border-radius:5px;">
+            <pre><code>let animals = ['elephant', 'cat', 'butterfly', 'dog', 'ant'];
+animals.sort((a, b) => a.length - b.length);
+console.log(animals);</code></pre>
+        </div>
+    </div>
+
+    <div class="challenge">
+        <h2>5. Sort Objects by Age</h2>
+        <button onclick="challenge5()">Run Challenge 5</button>
+        <button onclick="showAnswer(5)">Show Answer</button>
+        <div class="output" id="output5"></div>
+        <div id="answer5" style="display:none; background:#e8f4f8; padding:15px; margin-top:15px; border-radius:5px;">
+            <pre><code>let people = [
+    { name: 'Alice', age: 30 },
+    { name: 'Bob', age: 25 },
+    { name: 'Charlie', age: 35 },
+    { name: 'Diana', age: 28 }
+];
+people.sort((a, b) => a.age - b.age);
+console.log(people);</code></pre>
+        </div>
+    </div>
+
+    <div class="challenge">
+        <h2>🎁 Bonus: Sort by Grade then Name</h2>
+        <button onclick="bonusChallenge()">Run Bonus Challenge</button>
+        <button onclick="showAnswer(6)">Show Answer</button>
+        <div class="output" id="outputBonus"></div>
+        <div id="answer6" style="display:none; background:#e8f4f8; padding:15px; margin-top:15px; border-radius:5px;">
+            <pre><code>let students = [
+    { name: 'Alex', grade: 85 },
+    { name: 'Bella', grade: 92 },
+    { name: 'Charlie', grade: 85 },
+    { name: 'Diana', grade: 92 },
+    { name: 'Evan', grade: 78 }
+];
+
+students.sort((a, b) => {
+    if (a.grade !== b.grade) {
+        return b.grade - a.grade; // Higher grade first
+    } else {
+        return a.name.localeCompare(b.name); // Alphabetical if same grade
+    }
+});
+console.log(students);</code></pre>
+        </div>
+    </div>
+
+    <script src="sort.js">
+        </script> 
+</body>
+</html>

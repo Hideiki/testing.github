@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Methods & Math Object</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 { color: #2c3e50; }
+        h2 { color: #3498db; margin-top: 20px; }
+        button {
+            padding: 10px;
+            margin: 5px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background: #2980b9; }
+        .output {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-line;
+            border: 2px solid #3498db;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 10px;
+            background: #e8f4f8;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 Array Methods & Math Object</h1>
+    
+    <div class="section">
+        <h2>🗺️ MAP() - Transform Each Item</h2>
+        <button onclick="mapDouble()">M1: Double Numbers</button>
+        <button onclick="mapWithUnits()">M2: Add $ Signs</button>
+        <button onclick="mapNames()">M3: Extract Names</button>
+    </div>
+    
+    <div class="section">
+        <h2>🎯 FILTER() - Keep Some Items</h2>
+        <button onclick="filterEvens()">F1: Filter Evens</button>
+        <button onclick="filterAdults()">F2: Filter Adults</button>
+        <button onclick="filterLongWords()">F3: Long Words</button>
+    </div>
+    
+    <div class="section">
+        <h2>📊 REDUCE() - Combine All Items</h2>
+        <button onclick="reduceSum()">R1: Sum Numbers</button>
+        <button onclick="reduceMax()">R2: Find Maximum</button>
+        <button onclick="reduceTotalChars()">R3: Total Characters</button>
+    </div>
+    
+    <div class="section">
+        <h2>🧮 MATH Object</h2>
+        <button onclick="mathRounding()">M1: Rounding Practice</button>
+        <button onclick="mathRandom()">M2: Random Numbers</button>
+        <button onclick="mathMinMax()">M3: Min & Max</button>
+        <button onclick="mathPowerRoot()">M4: Power & Root</button>
+        <button onclick="mathDiceRoller()">M5: Dice Roller</button>
+    </div>
+    
+    <button onclick="shoppingCartBonus()">🎁 Bonus: Shopping Cart</button>
+
+    <div class="output" id="output">
+        ► Click a button to test...
+    </div>
+
+    <script src="map-filter-red-math.js"></script>
+</body>
+</html>

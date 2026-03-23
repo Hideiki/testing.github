@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 DOM Manipulation - Add & Change HTML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #94a3f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sub {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .list-container, .gallery, .colors-list, .card-container {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 1px solid #334155;
+            min-height: 120px;
+        }
+
+        ul, .gallery, .colors-list {
+            list-style: none;
+        }
+
+        li, .photo, .color-item {
+            background: #1e293b;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0.5rem;
+            border-left: 3px solid #3b82f6;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-item {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.8rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin: 0;
+        }
+
+        .remove-item:hover {
+            background: #b91c1c;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .photo {
+            background: #2d3a5e;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .card-component {
+            background: linear-gradient(145deg, #2d3a5e, #1e2a4a);
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 0.5rem 0;
+            border: 1px solid #3b82f6;
+        }
+
+        .card-component h3 {
+            color: #facc15;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-component p {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            display: inline-block;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>🎨</span> DOM Manipulation
+        </h1>
+        <div class="sub">createElement · append · prepend · insertBefore · removeChild</div>
+
+        <div class="grid">
+            <!-- CHALLENGE 1: Append Item -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">1️⃣</span>
+                    <span class="card-title">Append to List</span>
+                </div>
+                <div class="badge">.appendChild()</div>
+                <ul id="todoList" class="list-container">
+                    <li>Learn JavaScript</li>
+                    <li>Practice DOM</li>
+                </ul>
+                <button id="addItemBtn">+ Add Task (end)</button>
+                <div class="output" id="out1" style="font-size:0.75rem; color:#94a3b8; margin-top:0.5rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 2: Prepend Item -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">2️⃣</span>
+                    <span class="card-title">Prepend to List</span>
+                </div>
+                <div class="badge">.prepend()</div>
+                <ul id="ranking" class="list-container">
+                    <li>2nd Place</li>
+                    <li>3rd Place</li>
+                    <li>4th Place</li>
+                </ul>
+                <button id="addFirstBtn">🏆 Add 1st Place (start)</button>
+                <div class="output" id="out2" style="font-size:0.75rem; color:#94a3b8; margin-top:0.5rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 3: Insert Before -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">3️⃣</span>
+                    <span class="card-title">Insert Before</span>
+                </div>
+                <div class="badge">.insertBefore()</div>
+                <div id="gallery" class="gallery">
+                    <div class="photo">📷 Photo 1</div>
+                    <div class="photo" id="photo3">📷 Photo 3</div>
+                    <div class="photo">📷 Photo 4</div>
+                </div>
+                <button id="insertBtn">📸 Insert Photo 2 before Photo 3</button>
+                <div class="output" id="out3" style="font-size:0.75rem; color:#94a3b8; margin-top:0.5rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 4: Remove Child -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">4️⃣</span>
+                    <span class="card-title">Remove Child</span>
+                </div>
+                <div class="badge">.removeChild()</div>
+                <ul id="colors" class="colors-list">
+                    <li>🔴 Red</li>
+                    <li class="remove-me">🔵 Blue</li>
+                    <li>🟢 Green</li>
+                    <li>🟡 Yellow</li>
+                </ul>
+                <button id="removeBtn">❌ Remove Blue</button>
+                <div class="output" id="out4" style="font-size:0.75rem; color:#94a3b8; margin-top:0.5rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 5: Create Full Card -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">5️⃣</span>
+                    <span class="card-title">Create Card</span>
+                </div>
+                <div class="badge">createElement + classList</div>
+                <div id="cardContainer" class="card-container">
+                    <div class="card-component">
+                        <h3>✨ Starter Card</h3>
+                        <p>Click the button to add a new card</p>
+                    </div>
+                </div>
+                <button id="createCardBtn">📇 Create New Card</button>
+                <div class="output" id="out5" style="font-size:0.75rem; color:#94a3b8; margin-top:0.5rem;"></div>
+            </div>
+        </div>
+
+        <!-- BONUS: Dynamic Shopping List -->
+        <div class="card" style="margin-top: 0.5rem;">
+            <div class="card-header">
+                <span class="card-icon">🎁</span>
+                <span class="card-title">Bonus: Interactive Shopping List</span>
+            </div>
+            <div class="badge">append + removeChild + createElement</div>
+            <div class="input-group">
+                <input type="text" id="newItemInput" placeholder="e.g., 🥑 Avocado">
+                <button id="addShoppingBtn">+ Add Item</button>
+            </div>
+            <ul id="shoppingList" class="list-container">
+                <li>🥛 Milk <button class="remove-item">Remove</button></li>
+                <li>🍞 Bread <button class="remove-item">Remove</button></li>
+                <li>🥚 Eggs <button class="remove-item">Remove</button></li>
+            </ul>
+            <div class="output" id="outBonus" style="font-size:0.75rem; color:#94a3b8;"></div>
+        </div>
+
+        <div class="footer-note">
+            🔧 createElement · appendChild · prepend · insertBefore · removeChild
+        </div>
+    </div>
+
+    <script src="dom-manipulation.js">
+
+    </script>
+    </body>
+    </html>

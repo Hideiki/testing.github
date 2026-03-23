@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Object - Beginner Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .challenge {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        
+        button:hover {
+            background: #5a67d8;
+        }
+        
+        .output {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #f6e05e;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .hint {
+            background: #e2e8f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>📅 Date Object - Beginner Tasks</h1>
+    
+    <div class="container">
+        <div class="note">
+            <strong>📌 Important:</strong> Months are 0-11 (0 = January, 11 = December)!<br>
+            Days are 0-6 (0 = Sunday, 6 = Saturday)
+        </div>
+
+        <div class="challenge">
+            <h2>1. Display Current Date and Time</h2>
+            <button onclick="challenge1()">Run Challenge 1</button>
+            <div class="output" id="output1"></div>
+        </div>
+
+        <div class="challenge">
+            <h2>2. Get Date Components</h2>
+            <button onclick="challenge2()">Run Challenge 2</button>
+            <div class="output" id="output2"></div>
+        </div>
+
+        <div class="challenge">
+            <h2>3. Birthday Calculator</h2>
+            <button onclick="challenge3()">Run Challenge 3</button>
+            <div class="hint">Hint: Birthday difference is in milliseconds!</div>
+            <div class="output" id="output3"></div>
+        </div>
+
+        <div class="challenge">
+            <h2>4. Age Calculator</h2>
+            <button onclick="challenge4()">Run Challenge 4</button>
+            <div class="output" id="output4"></div>
+        </div>
+
+        <div class="challenge">
+            <h2>5. Format with Month Name</h2>
+            <button onclick="challenge5()">Run Challenge 5</button>
+            <div class="output" id="output5"></div>
+        </div>
+
+        <div class="challenge">
+            <h2>🎁 Bonus: Days Until Weekend</h2>
+            <button onclick="bonusChallenge()">Run Bonus</button>
+            <div class="output" id="outputBonus"></div>
+        </div>
+    </div>
+
+    <script src="date.js"> </script>
+    </body></html>

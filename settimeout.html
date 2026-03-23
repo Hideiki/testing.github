@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⏰ setTimeout · Beginner Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0b1120 0%, #192132 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .glass-card {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(17, 25, 40, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            background: linear-gradient(115deg, #ffffff 0%, #b3c7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h1 span {
+            font-size: 2.8rem;
+            background: none;
+            -webkit-text-fill-color: initial;
+            background-clip: unset;
+        }
+
+        .subhead {
+            color: #8a9bb5;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 2.25rem;
+            border-left: 3px solid #3b7cff;
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .task-panel {
+            background: rgba(12, 20, 35, 0.7);
+            border-radius: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .task-panel:hover {
+            border-color: rgba(59, 124, 255, 0.25);
+            box-shadow: 0 12px 28px rgba(0, 40, 120, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .task-icon {
+            font-size: 1.9rem;
+            line-height: 1;
+            filter: drop-shadow(0 4px 6px #1e2f5a);
+        }
+
+        .task-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: -0.01em;
+        }
+
+        .task-btn {
+            background: linear-gradient(135deg, #1e2f5a, #14223c);
+            border: 1px solid rgba(59, 124, 255, 0.4);
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 10px rgba(0, 20, 60, 0.6);
+            margin: 0.75rem 0 1rem 0;
+        }
+
+        .task-btn:hover {
+            background: linear-gradient(135deg, #234383, #1a2f60);
+            border-color: #3b7cff;
+            box-shadow: 0 6px 14px #1e3f8f;
+        }
+
+        .output-box {
+            background: #0f1629;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            border: 1px solid #2a3450;
+            color: #bfd0f0;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            min-height: 4rem;
+            word-break: break-word;
+            box-shadow: inset 0 2px 6px #00000050;
+            transition: 0.15s;
+            margin-top: 0.25rem;
+        }
+
+        .timer-digits {
+            background: #0a1020;
+            border-radius: 3rem;
+            padding: 0.5rem 1.2rem;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            box-shadow: 0 0 20px #3b7cff60;
+            border: 1px solid #3b7cff;
+            width: fit-content;
+            margin: 1rem auto 0.5rem auto;
+        }
+
+        .color-demo {
+            width: 100%;
+            height: 100px;
+            border-radius: 1.5rem;
+            background: #3b82f6;
+            margin: 1rem 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 6px black;
+            transition: background 0.2s ease;
+            border: 1px solid rgb(255 255 255 / 0.2);
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #5f739b;
+            font-size: 0.9rem;
+            border-top: 1px solid #253046;
+            padding-top: 1.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .badge {
+            background: #2d3b5a;
+            color: #b5ccff;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            border: 1px solid #405680;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>
+            <span>⏳</span> setTimeout · Playground
+        </h1>
+        <div class="subhead">Master asynchronous JavaScript with 5 hands‑on tasks</div>
+
+        <div class="grid">
+            <!-- TASK 1 – Basic Delay -->
+            <div class="task-panel">
+                <div class="task-header">
+                    <span class="task-icon">1️⃣</span>
+                    <span class="task-title">Basic delay</span>
+                </div>
+                <div class="badge">⏱️ 3s + 2s</div>
+                <button class="task-btn" id="btnTask1">▶ Start message</button>
+                <div class="output-box" id="output1">⏳ Waiting for click…</div>
+            </div>
+
+            <!-- TASK 2 – Countdown -->
+            <div class="task-panel">
+                <div class="task-header">
+                    <span class="task-icon">2️⃣</span>
+                    <span class="task-title">Countdown</span>
+                </div>
+                <div class="badge">⏲️ 3 → 2 → 1 → GO</div>
+                <button class="task-btn" id="btnTask2">▶ Start countdown</button>
+                <div class="timer-digits" id="timerDisplay">⚡</div>
+                <div class="output-box" id="output2">⚡ Press to launch</div>
+            </div>
+
+            <!-- TASK 3 – Color sequence -->
+            <div class="task-panel">
+                <div class="task-header">
+                    <span class="task-icon">3️⃣</span>
+                    <span class="task-title">Color morph</span>
+                </div>
+                <div class="badge">🎨 2s → 2s → 1s</div>
+                <button class="task-btn" id="btnTask3">▶ Start sequence</button>
+                <div class="color-demo" id="colorBox">🔵 blue</div>
+                <div class="output-box" id="output3"></div>
+            </div>
+
+            <!-- TASK 4 – Welcome + reminders -->
+            <div class="task-panel">
+                <div class="task-header">
+                    <span class="task-icon">4️⃣</span>
+                    <span class="task-title">Welcome chain</span>
+                </div>
+                <div class="badge">💬 5s + 3s</div>
+                <button class="task-btn" id="btnTask4">▶ Ask name</button>
+                <div class="output-box" id="output4">👤 Click to start</div>
+            </div>
+
+            <!-- TASK 5 – Random joke, random delay -->
+            <div class="task-panel">
+                <div class="task-header">
+                    <span class="task-icon">5️⃣</span>
+                    <span class="task-title">Random joke</span>
+                </div>
+                <div class="badge">🎲 delay 1–5s</div>
+                <button class="task-btn" id="btnTask5">▶ Tell a joke</button>
+                <div class="output-box" id="output5">😂 Click for laugh</div>
+            </div>
+        </div>
+
+        <!-- BONUS – typing effect (full width) -->
+        <div style="background: rgba(0, 0, 0, 0.3); border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0 1rem; border: 1px solid #25386a;">
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+                <span style="font-weight: 600; font-size: 1.5rem; color: white;">Typing effect</span>
+                <span class="badge">200ms per char</span>
+            </div>
+            <button class="task-btn" id="btnBonus" style="width: auto; padding: 0.6rem 2rem;">▶ Click to see the hidden message</button>
+            <div class="output-box" id="outputBonus" style="min-height: 5rem; font-size: 1.6rem; text-align: center; font-weight: 500;"></div>
+        </div>
+
+        <div class="footer-note">
+            ⏰ setTimeout is non‑blocking · each timer runs independently
+        </div>
+    </div>
+
+    <script src="settimeout.js">
+
+    </script>
+    </body></html>

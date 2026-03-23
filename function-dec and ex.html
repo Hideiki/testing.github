@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Declaration vs Expression</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 { color: #2c3e50; }
+        h2 { color: #3498db; margin-top: 30px; }
+        button {
+            padding: 10px;
+            margin: 5px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background: #2980b9; }
+        .output {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-line;
+            border: 2px solid #3498db;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Function Declaration vs Expression</h1>
+    
+    <div class="note">
+        <strong>📌 Function Declaration:</strong> Can be called BEFORE definition<br>
+        <strong>📌 Function Expression:</strong> Must be defined BEFORE calling
+    </div>
+
+    <h2>📋 FUNCTION DECLARATIONS</h2>
+    <button onclick="testDeclaration1()">Task D1: Temperature</button>
+    <button onclick="testDeclaration2()">Task D2: Even/Odd</button>
+    <button onclick="testDeclaration3()">Task D3: Max of Three</button>
+    <button onclick="testDeclaration4()">Task D4: Interest</button>
+    <button onclick="testDeclaration5()">Task D5: Word Counter</button>
+
+    <h2>📋 FUNCTION EXPRESSIONS</h2>
+    <button onclick="testExpression1()">Task E1: Rectangle</button>
+    <button onclick="testExpression2()">Task E2: Sign Check</button>
+    <button onclick="testExpression3()">Task E3: Time Greeting</button>
+    <button onclick="testExpression4()">Task E4: Discount</button>
+    <button onclick="testExpression5()">Task E5: Capitalize</button>
+
+    <h2>🎁 BONUS CHALLENGES</h2>
+    <button onclick="testBonus1()">Bonus 1: Calculator</button>
+    <button onclick="testBonus2()">Bonus 2: Password</button>
+    <button onclick="testBonus3()">Bonus 3: BMI</button>
+    <button onclick="testBonus4()">Bonus 4: FizzBuzz</button>
+    <button onclick="testBonus5()">Bonus 5: Age Category</button>
+
+    <div class="output" id="output">
+        ► Click a button to test functions...
+    </div>
+
+    <script src="function-dec.js">
+    </script>
+</body>
+</html>

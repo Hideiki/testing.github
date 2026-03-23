@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Life For Loops</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        h1 { text-align: center; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .btn {
+            padding: 15px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>📋 Real-Life For Loops</h1>
+    
+    <div class="grid">
+        <button class="btn" onclick="weeklyAllowance()">💰 Weekly Allowance</button>
+        <button class="btn" onclick="groceryList()">🛒 Grocery List</button>
+        <button class="btn" onclick="stepCounter()">👟 Step Counter</button>
+        <button class="btn" onclick="billSplit()">🧾 Bill Split</button>
+        <button class="btn" onclick="examAverage()">📚 Exam Average</button>
+        <button class="btn" onclick="workoutTracker()">💪 Workout Tracker</button>
+        <button class="btn" onclick="monthlyBills()">📆 Monthly Bills</button>
+        <button class="btn" onclick="temperatureConverter()">🌡️ Temperature</button>
+        <button class="btn" onclick="piggyBank()">🐷 Piggy Bank</button>
+        <button class="btn" onclick="passwordGenerator()">🔐 Passwords</button>
+        <button class="btn" onclick="coffeeShopOrders()">☕ Coffee Shop</button>
+    </div>
+
+    <script src="for-loop-irl.js">
+        // Paste your functions here
+    </script>
+</body>
+</html>

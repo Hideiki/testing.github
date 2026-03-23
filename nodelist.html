@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 NodeList - Beginner Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #94a3f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sub {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-small {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .list-container, .numbers-container, .students-container, .dynamic-container {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border: 1px solid #334155;
+            min-height: 100px;
+        }
+
+        .numbers-container div {
+            background: #1e293b;
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+            border-radius: 0.5rem;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        .student-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0.5rem;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .student-item.passed {
+            border-left-color: #10b981;
+        }
+
+        .student-item.failed {
+            border-left-color: #ef4444;
+        }
+
+        .dynamic-btn {
+            background: #334155;
+            margin: 0.25rem;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .todo-item.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+        }
+
+        .highlight {
+            background: #facc15 !important;
+            color: #0f172a !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>📋</span> NodeList Playground
+        </h1>
+        <div class="sub">querySelectorAll · forEach · NodeList vs Array</div>
+
+        <div class="grid">
+            <!-- CHALLENGE 1: Get All Buttons -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">1️⃣</span>
+                    <span class="card-title">Count Buttons</span>
+                </div>
+                <div class="badge">querySelectorAll + .length</div>
+                <div id="ch1Buttons">
+                    <button class="demo-btn">Click 1</button>
+                    <button class="demo-btn">Click 2</button>
+                    <button class="demo-btn">Click 3</button>
+                    <button class="demo-btn">Click 4</button>
+                    <button class="demo-btn">Click 5</button>
+                </div>
+                <button id="countBtnsBtn">📊 Count Buttons</button>
+                <div class="output" id="out1" style="color:#94a3b8; margin-top:0.5rem; font-size:0.85rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 2: Loop Through NodeList -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">2️⃣</span>
+                    <span class="card-title">Loop & Highlight</span>
+                </div>
+                <div class="badge">.forEach() on NodeList</div>
+                <ul id="fruitList" class="list-container">
+                    <li>🍎 Apple</li>
+                    <li>🍌 Banana</li>
+                    <li>🍊 Orange</li>
+                    <li>🍇 Grape</li>
+                    <li>🥭 Mango</li>
+                </ul>
+                <button id="highlightBtn">✨ Highlight All</button>
+                <button id="resetHighlightBtn">🔄 Reset</button>
+                <div class="output" id="out2" style="color:#94a3b8; margin-top:0.5rem; font-size:0.85rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 3: Convert to Array -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">3️⃣</span>
+                    <span class="card-title">Convert to Array</span>
+                </div>
+                <div class="badge">Array.from() + .map()</div>
+                <div id="numbersContainer" class="numbers-container">
+                    <div class="numbers">1</div>
+                    <div class="numbers">2</div>
+                    <div class="numbers">3</div>
+                    <div class="numbers">4</div>
+                    <div class="numbers">5</div>
+                </div>
+                <button id="doubleBtn">🔢 Double Values (map)</button>
+                <div class="output" id="out3" style="color:#94a3b8; margin-top:0.5rem; font-size:0.85rem;"></div>
+            </div>
+
+            <!-- CHALLENGE 4: Filter NodeList -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">4️⃣</span>
+                    <span class="card-title">Filter Students</span>
+                </div>
+                <div class="badge">Array.filter() on NodeList</div>
+                <ul id="studentList" class="students-container">
+                    <li class="student-item passed">Alice - 85 ✅</li>
+                    <li class="student-item failed">Bob - 62 ❌</li>
+                    <li class="student-item passed">Charlie - 91 ✅</li>
+                    <li class="student-item failed">Diana - 58 ❌</li>
+                    <li class="student-item passed">Evan - 88 ✅</li>
+                </ul>
+                <button id="showPassedBtn" class="btn-success">Show Passed Only</button>
+                <button id="showFailedBtn" class="btn-danger">Show Failed Only</button>
+                <button id="showAllBtn">Show All</button>
+                <div class="output" id="out4" style="color:#94a3b8; margin-top:0.5rem; font-size:0.85rem;"></div>
+            </div>
+        </div>
+
+        <!-- CHALLENGE 5: Dynamic Button Creation -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+                <span class="card-icon">5️⃣</span>
+                <span class="card-title">Dynamic Buttons</span>
+            </div>
+            <div class="badge">createElement + NodeList</div>
+            <div id="dynamicContainer" class="dynamic-container" style="min-height: 80px;">
+                <p style="color:#64748b;">No buttons yet. Click "Add Buttons"</p>
+            </div>
+            <div>
+                <button id="addDynamicBtns">➕ Add 5 Buttons</button>
+                <button id="countDynamicBtns">🔢 Count Buttons</button>
+                <button id="removeAllDynamic" class="btn-danger">🗑️ Remove All</button>
+            </div>
+            <div class="output" id="out5" style="color:#94a3b8; margin-top:0.5rem; font-size:0.85rem;"></div>
+        </div>
+
+        <!-- BONUS: Todo App -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🎁</span>
+                <span class="card-title">Bonus: Todo with NodeList</span>
+            </div>
+            <div class="badge">Complete App using NodeList</div>
+            <div class="input-group">
+                <input type="text" id="todoInput" placeholder="Enter a task...">
+                <button id="addTodoBtn">+ Add Task</button>
+            </div>
+            <ul id="todoList" class="list-container">
+                <li class="todo-item">Learn JavaScript <button class="complete-btn btn-small">✓ Complete</button></li>
+                <li class="todo-item">Practice NodeList <button class="complete-btn btn-small">✓ Complete</button></li>
+            </ul>
+            <div>
+                <button id="completeAllBtn" class="btn-success">✓ Complete All</button>
+                <button id="deleteCompletedBtn" class="btn-danger">🗑️ Delete Completed</button>
+            </div>
+            <div class="output" id="outBonus" style="color:#94a3b8; margin-top:0.5rem; font-size:0.85rem;"></div>
+        </div>
+
+        <div class="footer-note">
+            📌 NodeList has .forEach() but NOT .map() or .filter() | Use Array.from() or [...nodelist] to convert
+        </div>
+    </div>
+
+    <script src="nodelist.js">
+
+    </script>
+    </body>
+    </html>

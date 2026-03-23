@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Loop Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f4f8;
+        }
+        h1 { color: #2c3e50; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .btn {
+            padding: 15px;
+            font-size: 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn:hover { background: #2980b9; }
+        .output {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 For Loop Practice</h1>
+    <p>"When you know exactly how many times"</p>
+    
+    <div class="grid">
+        <button class="btn" onclick="countToTen()">1️⃣ Count to 10</button>
+        <button class="btn" onclick="evenNumbers()">2️⃣ Even Numbers</button>
+        <button class="btn" onclick="sumToHundred()">3️⃣ Sum to 100</button>
+        <button class="btn" onclick="multiplicationTable()">4️⃣ Times Table</button>
+        <button class="btn" onclick="countdown()">5️⃣ Countdown</button>
+        <button class="btn" onclick="factorial()">🎁 Factorial</button>
+        <button class="btn" onclick="starPattern()">6️⃣ Star Pattern</button>
+        <button class="btn" onclick="averageFive()">7️⃣ Average 5</button>
+        <button class="btn" onclick="findLargest()">8️⃣ Find Largest</button>
+        <button class="btn" onclick="reverseWord()">9️⃣ Reverse Word</button>
+        <button class="btn" onclick="diceRoller()">🔟 Dice Roller</button>
+    </div>
+    
+    <div class="output" id="output">
+        ► Click a button to see results...
+    </div>
+
+    <script src="for-loop.js">
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔄 Destructuring - Beginner Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #94a3f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sub {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .output {
+            background: #0f172a;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #cbd5e1;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #334155;
+            white-space: pre-line;
+        }
+
+        .code-example {
+            background: #1e293b;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+        }
+
+        .success {
+            color: #10b981;
+        }
+
+        .highlight {
+            color: #facc15;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>🔄</span> Destructuring Magic
+        </h1>
+        <div class="sub">Extract values from arrays and objects with clean syntax</div>
+
+        <div class="grid">
+            <!-- CHALLENGE 1: Basic Array Destructuring -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">1️⃣</span>
+                    <span class="card-title">Array Destructuring</span>
+                </div>
+                <div class="badge">let [first, second, third, ...rest] = array</div>
+                <div class="code-example">
+                    📦 colors = ['red', 'blue', 'green', 'yellow', 'purple']
+                </div>
+                <button id="btn1">✨ Extract Colors</button>
+                <div class="output" id="out1">Click to see destructuring in action...</div>
+            </div>
+
+            <!-- CHALLENGE 2: Skipping Items -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">2️⃣</span>
+                    <span class="card-title">Skip Items</span>
+                </div>
+                <div class="badge">[first, , third, , fifth] = fruits</div>
+                <div class="code-example">
+                    🍎 fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+                </div>
+                <button id="btn2">⏭️ Skip Items</button>
+                <div class="output" id="out2">Click to skip items...</div>
+            </div>
+
+            <!-- CHALLENGE 3: Object Destructuring -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">3️⃣</span>
+                    <span class="card-title">Object Destructuring</span>
+                </div>
+                <div class="badge">let { name, age, email } = user</div>
+                <div class="code-example">
+                    👤 user = { name: 'John Doe', age: 30, email: 'john@example.com', city: 'NY', country: 'USA' }
+                </div>
+                <button id="btn3">📋 Extract User</button>
+                <div class="output" id="out3">Click to extract user data...</div>
+            </div>
+
+            <!-- CHALLENGE 4: Default Values -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">4️⃣</span>
+                    <span class="card-title">Default Values</span>
+                </div>
+                <div class="badge">let { name, city = 'Unknown' } = person</div>
+                <div class="code-example">
+                    👤 person = { name: 'Alice', age: 25 }<br>
+                    (no city or job properties)
+                </div>
+                <button id="btn4">🔧 Add Defaults</button>
+                <div class="output" id="out4">Click to add default values...</div>
+            </div>
+
+            <!-- CHALLENGE 5: Nested Destructuring -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">5️⃣</span>
+                    <span class="card-title">Nested Destructuring</span>
+                </div>
+                <div class="badge">{ user: { name, address: { city } }, scores: [first, , , last] }</div>
+                <div class="code-example">
+                    📦 Complex nested object with user, scores, settings
+                </div>
+                <button id="btn5">🎯 Extract Nested</button>
+                <div class="output" id="out5">Click to extract nested data...</div>
+            </div>
+        </div>
+
+        <!-- BONUS: Swap Variables -->
+        <div class="card" style="margin-top: 0.5rem;">
+            <div class="card-header">
+                <span class="card-icon">🎁</span>
+                <span class="card-title">Bonus: Swap Variables</span>
+            </div>
+            <div class="badge">[a, b] = [b, a]</div>
+            <div class="code-example">
+                let a = 10, b = 20
+            </div>
+            <button id="btnBonus">🔄 Swap a and b</button>
+            <div class="output" id="outBonus">Click to swap values...</div>
+        </div>
+
+        <div class="footer-note">
+            📌 Destructuring = Clean, readable code! Arrays use [ ], Objects use { }
+        </div>
+    </div>
+
+    <script src="destructuring.js">
+        </script>
+        </body></html>

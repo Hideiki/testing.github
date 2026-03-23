@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤝 Promises & Async/Await - Beginner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #94a3f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sub {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .output {
+            background: #0f172a;
+            border-radius: 0.8rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #cbd5e1;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #334155;
+            min-height: 70px;
+            white-space: pre-line;
+        }
+
+        .loading {
+            background: #facc15;
+            color: #0f172a;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .success {
+            color: #10b981;
+        }
+
+        .error {
+            color: #ef4444;
+        }
+
+        .pending {
+            color: #facc15;
+        }
+
+        .code-example {
+            background: #1e293b;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+        }
+
+        .status {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>🤝</span> Promises & Async/Await
+        </h1>
+        <div class="sub">Handle async operations without blocking your code!</div>
+
+        <div class="grid">
+            <!-- CHALLENGE 1: Basic Promise -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">1️⃣</span>
+                    <span class="card-title">Basic Promise</span>
+                </div>
+                <div class="badge">.then() + .catch()</div>
+                <div class="code-example">
+                    new Promise((resolve) => { setTimeout(() => resolve(), 2000) })
+                </div>
+                <button id="btn1">⏳ Run Promise</button>
+                <div class="output" id="out1">Click to start...</div>
+            </div>
+
+            <!-- CHALLENGE 2: Random Promise (Reject) -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">2️⃣</span>
+                    <span class="card-title">Random Promise</span>
+                </div>
+                <div class="badge">resolve() + reject() · 50% chance</div>
+                <div class="code-example">
+                    Math.random() > 0.5 ? resolve() : reject()
+                </div>
+                <button id="btn2">🎲 Run Random Promise</button>
+                <div class="output" id="out2">Click to test your luck...</div>
+            </div>
+
+            <!-- CHALLENGE 3: async/await Basic -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">3️⃣</span>
+                    <span class="card-title">async/await</span>
+                </div>
+                <div class="badge">async function + await</div>
+                <div class="code-example">
+                    async function() { let result = await promise; }
+                </div>
+                <button id="btn3">⏳ Run async/await</button>
+                <div class="output" id="out3">Click to start...</div>
+            </div>
+
+            <!-- CHALLENGE 4: Multiple Promises -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">4️⃣</span>
+                    <span class="card-title">Multiple Promises</span>
+                </div>
+                <div class="badge">Sequential await</div>
+                <div class="code-example">
+                    await step1(); await step2(); await step3();
+                </div>
+                <button id="btn4">🔗 Run Sequence</button>
+                <div class="output" id="out4">Click to run steps...</div>
+            </div>
+
+            <!-- CHALLENGE 5: User Login -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">5️⃣</span>
+                    <span class="card-title">User Login</span>
+                </div>
+                <div class="badge">async/await + try/catch</div>
+                <div class="code-example">
+                    checkCredentials(username, password)
+                </div>
+                <button id="btn5">🔐 Login Simulation</button>
+                <div class="output" id="out5">Click to login...</div>
+            </div>
+        </div>
+
+        <!-- BONUS: Quiz Game -->
+        <div class="card" style="margin-top: 0.5rem;">
+            <div class="card-header">
+                <span class="card-icon">🎁</span>
+                <span class="card-title">Bonus: Quiz Game</span>
+            </div>
+            <div class="badge">Promises for user answers</div>
+            <div class="code-example">
+                3 questions · correct = resolve · wrong = reject
+            </div>
+            <button id="btnBonus">🎮 Start Quiz</button>
+            <div class="output" id="outBonus">Click to start quiz!</div>
+        </div>
+
+        <div class="footer-note">
+            📌 Promise states: Pending → Resolved (✅) or Rejected (❌)<br>
+            📌 async/await = cleaner way to work with Promises!
+        </div>
+    </div>
+
+    <script src="async-await-promise.js"></script>
+    </body></html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Tables</title>
+    <link rel="stylesheet" href="random-num.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Random 3-Digit Number Generator</h1>
+        
+        <div class="button-container">
+            <button onclick="generateAllTables()" class="generate-btn">Generate New Numbers</button>
+            <button onclick="verifyCurrentTables()" class="verify-btn">Verify Current Numbers</button>
+            <button onclick="fixAllDuplicates()" class="fix-btn">Auto-Fix Duplicates</button>
+        </div>
+
+        <div class="tables-container">
+            <div class="table-wrapper">
+                <h2>Treatment 1</h2>
+                <div id="table1" class="number-table"></div>
+            </div>
+            
+            <div class="table-wrapper">
+                <h2>Treatment 2</h2>
+                <div id="table2" class="number-table"></div>
+            </div>
+            
+            <div class="table-wrapper">
+                <h2>Treatment 3</h2>
+                <div id="table3" class="number-table"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="random-num.js"></script>
+</body>
+</html>

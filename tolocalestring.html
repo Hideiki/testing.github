@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💱 toLocaleString() · Beginner Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0b1120 0%, #1a2645 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .main-card {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(18, 28, 46, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 2.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+            padding: 2.2rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(115deg, #ffffff, #9bb6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        h1 span {
+            font-size: 3rem;
+            background: none;
+            -webkit-text-fill-color: initial;
+        }
+
+        .sub {
+            color: #8fa4cc;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #3b7cff;
+            padding-left: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(9, 17, 31, 0.75);
+            border-radius: 2rem;
+            border: 1px solid #263353;
+            padding: 1.4rem 1.2rem;
+            transition: 0.2s;
+            box-shadow: 0 10px 24px -8px #03050b;
+        }
+
+        .card:hover {
+            border-color: #3f5e9e;
+            box-shadow: 0 18px 30px -6px #0c1a38;
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .chip {
+            background: #1f2c4a;
+            color: #adc4ff;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            border: 1px solid #3f5490;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .btn {
+            background: linear-gradient(145deg, #1f2f55, #14203b);
+            border: 1px solid #3b7cff60;
+            color: white;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            margin: 0.8rem 0 1rem 0;
+            transition: 0.2s;
+            box-shadow: 0 8px 16px #00000060;
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #2b3e70, #1f3160);
+            border-color: #3b7cff;
+        }
+
+        .output {
+            background: #0e162b;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            color: #c7d9ff;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            min-height: 5rem;
+            border: 1px solid #2c3f68;
+            box-shadow: inset 0 3px 8px #0000005e;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #f9d77e;
+            font-weight: 500;
+        }
+
+        .flag {
+            font-size: 1.4rem;
+            margin-right: 4px;
+        }
+
+        .footer-note {
+            color: #667daa;
+            border-top: 1px solid #253459;
+            padding-top: 1.8rem;
+            margin-top: 1.2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .inline-code {
+            background: #010613;
+            color: #b7d0ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid #3b4c77;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-card">
+        <h1>
+            <span>💱</span> toLocaleString · playground
+        </h1>
+        <div class="sub">Format numbers, currencies, dates & percentages for any region</div>
+
+        <div class="grid">
+            <!-- 1 – Basic locale comparison -->
+            <div class="card">
+                <div class="card-header"><span class="card-icon">🌎</span><span class="card-title">1. Locale comparison</span></div>
+                <div class="chip">en‑US · de‑DE · en‑IN · ja‑JP</div>
+                <button class="btn" id="btn1">▶ Show formats</button>
+                <div class="output" id="out1">⏳ Press to see 1,234,567.89 in 4 locales</div>
+            </div>
+
+            <!-- 2 – Currency formatter -->
+            <div class="card">
+                <div class="card-header"><span class="card-icon">💰</span><span class="card-title">2. Currency formatter</span></div>
+                <div class="chip">USD · EUR · JPY · PHP · GBP</div>
+                <button class="btn" id="btn2">▶ Format $1234.56</button>
+                <div class="output" id="out2"></div>
+            </div>
+
+            <!-- 3 – Percentage -->
+            <div class="card">
+                <div class="card-header"><span class="card-icon">📊</span><span class="card-title">3. Percentages</span></div>
+                <div class="chip">0.85 → 85.0%</div>
+                <button class="btn" id="btn3">▶ Show scores</button>
+                <div class="output" id="out3"></div>
+            </div>
+
+            <!-- 4 – Date formatter -->
+            <div class="card">
+                <div class="card-header"><span class="card-icon">📅</span><span class="card-title">4. Date formatter</span></div>
+                <div class="chip">25 Dec 2024 15:30</div>
+                <button class="btn" id="btn4">▶ Format date</button>
+                <div class="output" id="out4"></div>
+            </div>
+
+            <!-- 5 – Shopping cart -->
+            <div class="card">
+                <div class="card-header"><span class="card-icon">🛒</span><span class="card-title">5. Cart total</span></div>
+                <div class="chip">multiple currencies</div>
+                <button class="btn" id="btn5">▶ Calculate cart</button>
+                <div class="output" id="out5"></div>
+            </div>
+
+            <!-- Bonus – unit formatting -->
+            <div class="card">
+                <div class="card-header"><span class="card-icon">🎁</span><span class="card-title">Bonus · units</span></div>
+                <div class="chip">km, °F, kg, L</div>
+                <button class="btn" id="btnBonus">▶ Format measurements</button>
+                <div class="output" id="outBonus"></div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            ⚡ <span class="inline-code">toLocaleString(locale, options)</span> · style: currency, percent, unit, decimal
+        </div>
+    </div>
+
+    <script src="tolocalestring.js"></script>
+    </body>
+    </html>

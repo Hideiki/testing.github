@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everyday While Loops</title>
+    <link rel="stylesheet" href="while.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Everyday Scenarios</h1>
+        <p class="subtitle">Click a button to start a real-life simulation</p>
+        
+        <div class="button-grid">
+            <button class="btn vending" onclick="vendingMachine()">
+                <span class="emoji">🥤</span>
+                Vending Machine
+            </button>
+            
+            <button class="btn coffee" onclick="coffeeShop()">
+                <span class="emoji">☕</span>
+                Coffee Shop
+            </button>
+            
+            <button class="btn movie" onclick="movieTicket()">
+                <span class="emoji">🎬</span>
+                Movie Ticket
+            </button>
+            
+            <button class="btn luggage" onclick="luggageCheck()">
+                <span class="emoji">🧳</span>
+                Luggage Check
+            </button>
+            
+            <button class="btn tip" onclick="tipCalculator()">
+                <span class="emoji">🧾</span>
+                Tip Calculator
+            </button>
+            
+            <button class="btn pin" onclick="changePin()">
+                <span class="emoji">🔐</span>
+                Change PIN
+            </button>
+        </div>
+        
+        <div class="output-card" id="output">
+            <div class="output-header">
+                <span>📟 Console Output</span>
+                <button class="clear-btn" onclick="clearOutput()">Clear</button>
+            </div>
+            <div id="output-content" class="output-content">
+                ► Click any button to start...
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🔁 Practice while loops with real-life scenarios</p>
+        </div>
+    </div>
+
+    <script src="while.js"></script>
+</body>
+</html>

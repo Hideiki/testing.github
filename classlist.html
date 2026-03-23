@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 classList - Beginner Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #94a3f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sub {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.4);
+            border-color: #3b82f6;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .demo-box {
+            background: #1e293b;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .highlight {
+            background: #facc15;
+            color: #0f172a;
+            font-weight: bold;
+            border: 2px solid #eab308;
+        }
+
+        .active {
+            background: #3b82f6;
+            color: white;
+            border: 2px solid #2563eb;
+        }
+
+        .dark-mode {
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 2px solid #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .warning {
+            background: #f97316;
+            color: white;
+            border: 2px solid #ea580c;
+        }
+
+        .success {
+            background: #10b981;
+            color: white;
+            border: 2px solid #059669;
+        }
+
+        .special {
+            background: #8b5cf6;
+            color: white;
+            border: 2px solid #7c3aed;
+        }
+
+        .pressed {
+            background: #ef4444;
+            transform: scale(0.98);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .small {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+        }
+
+        .large {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        .output {
+            background: #0f172a;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            font-family: monospace;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+        }
+
+        .status {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background: #0f172a;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>🎨</span> classList Playground
+        </h1>
+        <div class="sub">add · remove · toggle · replace · contains</div>
+
+        <div class="grid">
+            <!-- CHALLENGE 1: Add Class -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">1️⃣</span>
+                    <span class="card-title">.add()</span>
+                </div>
+                <div class="badge">Add a class to element</div>
+                <div id="addBox" class="demo-box">✨ Click button to add highlight</div>
+                <button id="addBtn">➕ Add Highlight Class</button>
+                <div class="output" id="out1"></div>
+            </div>
+
+            <!-- CHALLENGE 2: Remove Class -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">2️⃣</span>
+                    <span class="card-title">.remove()</span>
+                </div>
+                <div class="badge">Remove a class from element</div>
+                <div id="removeBox" class="demo-box active">🎯 This has 'active' class</div>
+                <button id="removeBtn">➖ Remove Active Class</button>
+                <div class="output" id="out2"></div>
+            </div>
+
+            <!-- CHALLENGE 3: Toggle Class -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">3️⃣</span>
+                    <span class="card-title">.toggle()</span>
+                </div>
+                <div class="badge">Add if missing, remove if present</div>
+                <div id="toggleBox" class="demo-box">🌓 Click to toggle dark mode</div>
+                <button id="toggleBtn">🔄 Toggle Dark Mode</button>
+                <div class="output" id="out3"></div>
+            </div>
+
+            <!-- CHALLENGE 4: Replace Class -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">4️⃣</span>
+                    <span class="card-title">.replace()</span>
+                </div>
+                <div class="badge">Replace one class with another</div>
+                <div id="replaceBox" class="demo-box warning">⚠️ Warning style</div>
+                <button id="replaceBtn">🔄 Replace with Success</button>
+                <div class="output" id="out4"></div>
+            </div>
+
+            <!-- CHALLENGE 5: Contains -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">5️⃣</span>
+                    <span class="card-title">.contains()</span>
+                </div>
+                <div class="badge">Check if class exists</div>
+                <div id="containsBox" class="demo-box special">✨ This has 'special' class</div>
+                <button id="containsBtn">🔍 Check for 'special' class</button>
+                <div class="output" id="out5"></div>
+            </div>
+        </div>
+
+        <!-- BONUS: Interactive Button States -->
+        <div class="card" style="margin-top: 0.5rem;">
+            <div class="card-header">
+                <span class="card-icon">🎁</span>
+                <span class="card-title">Bonus: Interactive Button States</span>
+            </div>
+            <div class="badge">Multiple classList methods in action</div>
+            
+            <div id="bonusBox" class="demo-box">🤖 Interactive Demo Button</div>
+            
+            <div class="button-group" id="button-group">
+                <button id="togglePressedBtn">🔘 Toggle 'pressed'</button>
+                <button id="addDisabledBtn">🚫 Add 'disabled'</button>
+                <button id="removeDisabledBtn">✅ Remove 'disabled'</button>
+                <button id="checkDisabledBtn">🔍 Check if disabled</button>
+                <button id="replaceSizeBtn">📏 Replace 'small' with 'large'</button>
+            </div>
+            
+            <div class="status" id="bonusStatus">Current classes: <span id="classListDisplay">none</span></div>
+            <div class="output" id="outBonus"></div>
+        </div>
+
+        <div class="footer-note">
+            📌 classList.add() · remove() · toggle() · replace() · contains()
+        </div>
+    </div>
+
+    <script src="classlist.js">
+        </script>
+        </body></html>
